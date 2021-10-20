@@ -1,0 +1,429 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+<style>
+    body {
+        width: 100%;
+    }
+    .header {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/1.jpg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .banner-text {
+        position: absolute;
+        top:25%;
+        left:50%;
+        transform: translate(-50%);
+    }
+
+    .banner-text h1{
+        font-family: sans-serif;
+        color: #fff;
+        font-size: 75px;
+    }
+
+    .banner-btn a{
+        border: 1px solid #fff;
+        border-radius: 50px;
+        text-decoration: none;
+        padding: 10px 50px;
+        display: inline-block;
+        margin-top: 15px;
+        color: #fff;
+    }
+
+    .container {
+        text-align: center;
+    }
+
+    .banner-btn a:hover{
+        border: 1px solid #fff;
+        border-radius: 50px;
+        text-decoration: none;
+        padding: 10px 50px;
+        display: inline-block;
+        margin-top: 15px;
+        color: #fff;
+        background-color: rgba(62, 65, 62, 0.4);
+        
+    }
+    .trio {
+        
+        text-align: center;
+    }
+
+    .trio-box {
+        height: 600px;
+        width: auto;
+    }
+
+    .png {
+        height: 170px;
+        top: 50%;
+        left: 50%;
+        margin-top: 70px;
+        
+    }
+
+    .trio p {
+        font-size: 30px;
+        margin-top: 50px;
+        margin-left: 100px;
+        margin-right: 100px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .footer {
+        text-align: center;
+    }
+
+    .contact {
+        width: auto;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .contact h3{
+        font-family: 'Montserrat', sans-serif;
+        padding-bottom: 30px;
+        padding-top: 50px;
+        font-size: 35px; 
+    }
+
+    .email {
+        width: 300px;
+        margin-right: 40px;
+        margin-left: 90px
+    }
+
+    .input {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .img1{
+        background-image: url(static/auctions/run.jpg);
+        height: 60vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    img { max-width: 100%; }
+
+    .img2{
+        background-image: url(static/auctions/weight.jpg);
+        height: 60vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .content h3 {
+        font-family: 'Montserrat', sans-serif;
+        padding-top: 19%;
+        margin-left: 30%;
+        margin-right: 30%;
+        font-size: 35px;
+    }
+    
+    .content {
+        background-color: rgba(83, 83, 83, 0.1);
+        
+    }
+
+    .text {
+        text-align: center;
+    }
+
+    @keyframes hover {
+        from {
+            font-size: 16px;
+        }
+        to {
+            font-size: 14px;
+        }
+    }
+
+    @keyframes reversehover {
+        from {
+            font-size: 14px;
+        }
+        to {
+            font-size: 16px;
+        }
+    }
+
+    @keyframes button-hover {
+        from {
+            font-size: 50px;
+        }
+        to {
+            font-size: 47px;
+        }
+    }
+
+    @keyframes button-reversehover {
+        from {
+            font-size: 47px;
+        }
+        to {
+            font-size: 50px;
+        }
+    }
+
+    .banner-btn a:hover {
+        animation-name: hover;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+
+    .banner-btn a{
+        animation-name: reversehover;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+
+    .container-user {
+        text-align: center;
+        
+        margin: 0 100px;
+        height: 1000px;
+        padding-top: 150px;
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+
+    .recent {
+        background-color: rgb(43,43,43, 0.5);
+        position: static;
+        height: 700px;
+        -webkit-box-shadow: -130px 60px 86px -28px rgba(0,0,0,0.49);
+-moz-box-shadow: -130px 60px 86px -28px rgba(0,0,0,0.49);
+box-shadow: -130px 60px 86px -28px rgba(0,0,0,0.49);
+    }
+
+    .header-user {
+        background-color: rgb(58,58,58);
+        color: white;
+    }
+
+    .recent-title {
+        font-family: 'Montserrat', sans-serif;
+        float: left;
+        margin: 13px;
+        font-size: 64px;
+        
+    }
+
+    .recent-text {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        margin-left: 10px;
+        font-size: 40px;
+    }
+
+    .recent-des {
+        font-family: 'Montserrat', sans-serif;
+        text-align: left;
+        margin-left: 10px;
+    }
+
+    .biggy {
+        font-size: 50px;
+    }
+
+    
+
+    .recent-cardio {
+        background-image:  url(static/auctions/cardio.jpg);
+        height: 750px;
+        margin-top:-1%;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        
+        -webkit-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+-moz-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+    }
+
+    .recent-calis {
+        background-image:  url(static/auctions/calisthenics.jpeg);
+        height: 750px;
+        margin-top:-1%;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        
+        -webkit-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+-moz-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+    }
+
+    .recent-weight {
+        background-image:  url(static/auctions/barbell.jpg);
+        height: 750px;
+        margin-top:-1%;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        
+        -webkit-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+-moz-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+    }
+
+    .buttons {
+        -webkit-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+-moz-box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+box-shadow: -1px -1px 32px 0px rgba(0,0,0,0.62);
+        font-size: 50px;
+        padding: 10px;
+        border: none;
+        margin-bottom: 50px;
+        position: relative;
+        margin-top: -90px;
+    }
+
+    .buttons:hover {
+        animation-name: button-hover;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+
+    .buttons {
+        animation-name: button-reversehover;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<header class="header-user">
+    <div class="container-user">
+        <div style="position: relative;">
+            <form action="{% url 'add' %}">
+                <input type="submit" class=" buttons btn btn-light" value="Add a Workout">
+            </form>
+        </div>  
+        <div class="recent">
+            
+            <div class="row">
+                <div class="col-md-7">
+            <h1 class="recent-title">Most Recent Exercise</h1>
+            <br><br><br><br><br>
+            {% if workout == "weight" %}
+            <p class="recent-text biggy">{{exercise}}</p><br>
+            <p class="recent-text">{{sets}} <p class="recent-des">Sets</p></p><br>
+            <p class="recent-text">{{reps}} <p class="recent-des">Reps</p></p><br>
+            <p class="recent-text">{{weight}} <p class="recent-des">Lbs Lifted</p></p><br>        
+            </div>
+            <div class="recent-weight col-md-5">
+                
+            </div>
+            {% elif workout == "calisthenics" %}
+            <p class="recent-text biggy">{{exercise}}</p><br>
+            <p class="recent-text">{{sets}} <p class="recent-des">Sets</p></p><br>
+            <p class="recent-text">{{reps}} <p class="recent-des">Reps</p></p><br>
+            
+            </div>
+            <div class="recent-calis col-md-5">
+                
+            </div>
+            {% elif workout == "cardio" %}
+            <p class="recent-text biggy">{{exercise}}</p><br>
+            <p class="recent-text">{{duration}} <p class="recent-des">Minutes</p></p><br>
+            <p class="recent-text">{{distance}} <p class="recent-des">Kilometres</p></p><br>
+            
+            
+            </div>
+            <div class="recent-cardio col-md-5">
+                
+            </div>
+            {% endif %}
+            
+            
+            </div>
+        </div>
+        
+    </div>
+</header>
+
+{% else %}
+    <header class="header">
+        <div class="container">
+            <div class="banner-text">
+                <h1>Become a better you today.</h1>
+                <p class="banner-btn">
+                    <a href="{% url 'register' %}">Sign Up For Free</a>
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="row trio-box">
+        <div class="col-md-4 trio">
+            <img class="png" src="static/auctions/dumbbell.png">
+            <p>Record all your workouts in a simple and ready to use manner.</p>
+        </div>
+        <div class="col-md-4 trio">
+            <img class="png" src="static/auctions/bike.png">
+            <p>Choose from over hundreds of exercises tailored to your preferences.</p>
+        </div>
+        <div class="col-md-4 trio">
+            <img class="png" src="static/auctions/bar.png">
+            <p>Create new workout plans and follow your progress daily.</p>
+        </div>
+    </div>
+
+    <div class="content row">
+        <div class="col-md-7 img1"></div>
+        <div class="col-sm-5 text">
+            <h3>Meet the website that puts a world of health & fitness in your hands</h3>
+            <a href="">Get Inspired</a>
+        </div>
+    </div>
+    <div class="content row">
+        <div class="col-sm-5 text">
+            <h3>Our website offers you core features and more to inspire you on your journey.</h3>
+            <a href="">Learn more</a>
+        </div>
+        <div class="col-md-7 img2"></div>
+    </div>
+
+    <div class="container contact color">
+        <h3 id="thanks">Sign up to join our newsletter</h3>
+
+        
+            <div class="form-group row input" id="inputer">
+            <input class="form-control email" type="email" required placeholder="Email">
+            <button onclick="join()" class="join btn btn-primary">Join now</button>
+            </div>
+        
+    </div>
+
+
+    <footer class="footer py-4 bg-dark text-white-50">
+        <div>Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+        <p>© Copyright 2020</p>
+    </footer>
+{% endif %}
+{% endblock %}

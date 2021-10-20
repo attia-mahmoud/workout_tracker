@@ -1,0 +1,216 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+<style>
+    body {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/register.jpg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 80px;
+    }
+
+    .weight-form {
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+        border-radius: 25px;
+        text-align: center;
+        display: none;
+    }
+
+    .calis-form {
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgb(238,174,202);
+background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        border-radius: 25px;
+        text-align: center;
+        display: none;
+    }
+
+    .cardio-form {
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+        border-radius: 25px;
+        text-align: center;
+        display: none;
+    }
+
+    .trans {
+        
+        border:none;
+        
+    }
+
+    .scuff {
+        border-bottom: solid 1px black;
+    }
+
+    .form p{
+        padding-top:20px;
+    }
+
+    .form h1 {
+        padding-bottom: 10px;
+    }
+
+    .options {
+        width: 25%;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 25px;
+        text-align: center;
+    }
+
+    .choose {
+        margin: 10px;
+        font-size: 21px;
+        border: none;
+        padding: 10px 13px;
+    }
+
+    #weight {
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    }
+
+    #calis {
+        background: rgb(238,174,202);
+        background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+
+    #cardio {
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.5494572829131652) 0%, rgba(0,212,255,1) 100%);
+    }
+
+    .weight-bg {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/barbell.jpg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 80px;
+    }
+
+    .cardio-bg {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/cardio.jpg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 80px;
+    }
+
+    .calis-bg {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/calisthenics.jpeg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 80px;
+    }
+    
+    .form {
+        -webkit-box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+        -moz-box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+        box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+    }
+    
+</style>
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="options">
+        <button data-page="page1" class="choose btn btn-light" id="weight">Weightlifting</button>
+        <button data-page="page2" class="choose btn btn-light" id="calis">Calisthenics</button>
+        <button data-page="page3" class="choose btn btn-light" id="cardio">Cardio</button>
+    </div>
+    
+    
+    <div id="page1" class="form weight-form">
+        
+        <form autocomplete="off" action="{% url 'add' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group scuff">
+                <input  class="trans form-control" autofocus type="text" name="date" value="{{ date }}" disabled>
+            </div>
+            <div class="form-group scuff">
+                <input  class="trans form-control" autofocus type="text" name="exercise" placeholder="Exercise">
+            </div>
+            <input hidden type="text" name="type" value="weight">
+            <input hidden type="text" name="username" value="{{ user.username }}">
+            <div class="form-group scuff">
+                <input class="trans form-control" type="number" name="sets" placeholder="Number of Sets">
+            </div>
+            <div class="form-group scuff">
+                <input class="trans form-control" type="number" name="reps" placeholder="Number of Reps">
+            </div>
+            <div class="form-group scuff">
+                <input class="trans form-control" step="0.001" type="number" name="weight" placeholder="Weight (lb)">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Add">
+        </form>
+    
+    </div>
+
+    <div id="page2" class="form calis-form">
+        
+    <form autocomplete="off" action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group scuff">
+            <input  class="trans form-control" autofocus type="text" name="date" value="{{ date }}" disabled>
+        </div>
+        <input hidden type="text" name="type" value="calisthenics">
+        <div class="form-group scuff">
+            <input  class="trans form-control" autofocus type="text" name="exercise" placeholder="Exercise">
+        </div>
+        <div class="form-group scuff">
+            <input class="trans form-control" type="number" name="sets" placeholder="Number of Sets">
+        </div>
+        <div class="form-group scuff">
+            <input class="trans form-control" type="number" name="reps" placeholder="Number of Reps">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Add">
+    </form>
+    
+    </div>
+
+    <div id="page3" class="form cardio-form">
+        
+    <form autocomplete="off" action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group scuff">
+            <input  class="trans form-control" autofocus type="text" name="date" value="{{ date }}" disabled>
+        </div>
+        <input hidden type="text" name="type" value="cardio">
+        <div class="form-group scuff">
+            <input  class="trans form-control" autofocus type="text" name="exercise" placeholder="Exercise">
+        </div>
+        <div class="form-group scuff">
+            <input class="trans form-control" step="0.001" type="number" name="distance" placeholder="Distance (km)">
+        </div>
+        <div class="form-group scuff">
+            <input class="trans form-control" step="0.01" type="number" name="duration" placeholder="Duration (mins)">
+        </div>
+        <input class="btn btn-primary" type="submit" value="Add">
+    </form>
+    
+    </div>
+    
+
+{% endblock %}

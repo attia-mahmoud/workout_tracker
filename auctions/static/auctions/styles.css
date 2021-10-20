@@ -1,0 +1,13 @@
+body {
+    padding: 10px;
+}
+
+h3 {
+    color: green;
+    font-size: 55px;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: yellow;
+}

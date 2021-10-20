@@ -1,0 +1,188 @@
+{% extends "auctions/layout.html" %}
+
+{% block head %}
+<style>
+    body {
+        background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.6)), url(static/auctions/login.jpg);
+        height: 100vh;
+        width: auto;
+        -webkit-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 80px;
+        color: white;
+    }
+
+    .text {
+        color: white;
+    }
+
+    #content {
+        
+        width: 90%;
+        border: 1px solid white;
+    }
+
+    .session {
+        border: 1px solid yellow;
+        text-align: center;
+        padding: 25px;
+        margin: 30px;
+        display: inline-block;
+    }
+
+    .container {
+        text-align: center;
+       
+        width: 100%;
+    }
+
+    #label {
+        float: left;
+        font-size: 30px;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 17px;
+    }
+
+    .title {
+        font-size: 35px;
+        font-family: 'Montserrat', sans-serif;
+        margin-top: 20px;
+        
+    }
+
+    @keyframes pop {
+        from {
+            margin-top: 0px;
+            opacity: 0;
+        }
+        to {
+            margin-top: 20px;
+            opacity: 1;
+        }
+    }
+
+    .list {
+        animation-name: pop;
+        animation-duration: 0.3s;
+        animation-fill-mode: forwards;
+        border: 1px solid;
+        border-radius: 20px;
+        font-size: 20px;
+        margin: 0 90px;
+        -webkit-box-shadow: -1px 0px 70px -8px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 0px 70px -8px rgba(0,0,0,0.75);
+        box-shadow: -1px 0px 70px -8px rgba(0,0,0,0.75);
+    }
+
+    .big {
+        padding-top: 7px;
+        padding-bottom: 10px;
+        background-color: rgba(255, 255, 255);
+        color: black;
+        margin: 20px;
+        -webkit-box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+        -moz-box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+        box-shadow: 7px 7px 20px -6px rgba(255,255,255,1);
+        border-radius: 20px;
+        max-height: 250px;
+        overflow-y:scroll;
+    }
+
+    .pickme {
+        width: 500px;
+        display: inline-block;
+        margin-left: -29%;
+        margin-top: 5px;
+    }
+
+    .weights-parent {
+        background: rgb(131,58,180);
+        background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    }
+
+    .calis-parent {
+        background: rgb(238,174,202);
+        background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    }
+
+    .cardio-parent {
+        background: rgb(2,0,36);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+    }
+
+    @keyframes refresh {
+        from {
+            height: auto;
+        }
+        to {
+            height: 0px;
+        }
+    }
+
+    /* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: transparent;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+}
+</style>
+{% endblock %}
+
+
+{% block body %}
+
+
+    
+    <div class="container">
+        <div class="content">
+            <form>
+                {% csrf_token %}
+                <label id="label" class="text" for="dates">Choose a date:</label>
+                <select class="browser-default custom-select pickme" name="dates" id="dates">
+                    <option default value="">No date selected</option>
+                    {% for session in sessions %}
+                    <option value="{{ session.date }}">{{ session.date }}</option>
+                    {% endfor %}
+                </select>
+                
+            </form>
+            
+        </div>
+    </div>
+    <div class="container">
+        <div class="content">
+            <div id="workouts">
+                <div class="weights-parent big">
+                    <h2 class = "title weight-title">Weightlifting</h2>
+                    <div class="weights parents">
+
+                    </div>
+                </div>
+                <div class="calis-parent big">
+                    <h2 class = "title calis-title">Calisthenics</h2>
+                    <div class="calis parents">
+
+                    </div>
+                </div>
+                <div class="cardio-parent big">
+                    <h2 class = "title cardio-title">Cardio</h2>
+                    <div class="cardio parents">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
